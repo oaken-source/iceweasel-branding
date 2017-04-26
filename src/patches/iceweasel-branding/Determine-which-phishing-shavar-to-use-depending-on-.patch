@@ -1,31 +1,30 @@
 From: André Silva <emulatorman@parabola.nu>
-Date: Wed, 21 Sep 2016 23:28:27 -0300
+Date: Sat, 19 Nov 2016 02:54:21 -0300
 Subject: Determine which phishing shavar to use depending on
  MOZ_OFFICIAL_BRANDING
 
 ---
- modules/libpref/init/all.js | 4 ++++
+ modules/libpref/init/all.js | 4 +---
  modules/libpref/moz.build   | 3 +++
- 2 files changed, 7 insertions(+)
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
-index 284f464..3fbd83b 100644
+index 11bfba3..ed817aa 100644
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
-@@ -5028,7 +5028,11 @@ pref("dom.mapped_arraybuffer.enabled", false);
- 
+@@ -5070,9 +5070,7 @@ pref("dom.mapped_arraybuffer.enabled", true);
  // The tables used for Safebrowsing phishing and malware checks.
  pref("urlclassifier.malwareTable", "goog-malware-shavar,goog-unwanted-shavar,test-malware-simple,test-unwanted-simple");
+ 
+-#ifdef MOZILLA_OFFICIAL
+-// In the official build, we are allowed to use google's private
+-// phishing list "goog-phish-shavar". See Bug 1288840.
 +#ifdef MOZ_OFFICIAL_BRANDING
  pref("urlclassifier.phishTable", "goog-phish-shavar,test-phish-simple");
-+#else
-+pref("urlclassifier.phishTable", "googpub-phish-shavar,test-phish-simple");
-+#endif
- 
- // Tables for application reputation.
- pref("urlclassifier.downloadBlockTable", "goog-badbinurl-shavar");
+ #else
+ pref("urlclassifier.phishTable", "googpub-phish-shavar,test-phish-simple");
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index 650d1a8..2db2fdb 100644
+index 1c2c13e..7783e9d 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
 @@ -46,3 +46,6 @@ DEFINES['MOZ_WIDGET_TOOLKIT'] = CONFIG['MOZ_WIDGET_TOOLKIT']
