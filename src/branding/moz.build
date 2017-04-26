@@ -1,0 +1,6 @@
+DIST_SUBDIR = 'browser'
+export('DIST_SUBDIR')
+DIRS += ['content', 'locales']
+JAR_MANIFESTS += ['jar.mn']
+EXTRA_COMPONENTS += ['aboutIce.js', 'aboutIce.manifest']
+JS_PREFERENCE_FILES += ['firefox-branding.js']
