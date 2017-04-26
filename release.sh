@@ -2,7 +2,7 @@
 
 set -eu
 
-pkgver=45.0
+pkgver=49.0
 pkgrel=1
 
 srcdir=src

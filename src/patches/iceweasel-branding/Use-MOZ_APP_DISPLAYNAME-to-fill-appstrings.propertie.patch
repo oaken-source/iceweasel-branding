@@ -1,5 +1,5 @@
 From: André Silva <emulatorman@parabola.nu>
-Date: Sat, 04 Aug 2016 06:13:13 +0100
+Date: Wed, 21 Sep 2016 22:48:27 -0300
 Subject: Use MOZ_APP_DISPLAYNAME to fill appstrings.properties
 
 ---
@@ -8,7 +8,7 @@ Subject: Use MOZ_APP_DISPLAYNAME to fill appstrings.properties
  2 files changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index 76c4af8..440c1a6 100644
+index 894e3e0..73f5378 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
 @@ -19,6 +19,8 @@ SUBMAKEFILES += \
@@ -21,7 +21,7 @@ index 76c4af8..440c1a6 100644
  # build non-default locales to non-default dist/ locations. Be aware!
  
 diff --git a/browser/locales/en-US/chrome/overrides/appstrings.properties b/browser/locales/en-US/chrome/overrides/appstrings.properties
-index ea6f26c..6412e39 100644
+index 05cf816..5301b0b 100644
 --- a/browser/locales/en-US/chrome/overrides/appstrings.properties
 +++ b/browser/locales/en-US/chrome/overrides/appstrings.properties
 @@ -3,25 +3,25 @@
@@ -63,7 +63,7 @@ index ea6f26c..6412e39 100644
 @@ -36,9 +36,9 @@ deceptiveBlocked=This web page at %S has been reported as a deceptive site and h
  forbiddenBlocked=The site at %S has been blocked by your browser configuration.
  cspBlocked=This page has a content security policy that prevents it from being loaded in this way.
- corruptedContentError=The page you are trying to view cannot be shown because an error in the data transmission was detected.
+ corruptedContentErrorv2=The site at %S has experienced a network protocol violation that cannot be repaired.
 -remoteXUL=This page uses an unsupported technology that is no longer available by default in Firefox.
 +#expand remoteXUL=This page uses an unsupported technology that is no longer available by default in __MOZ_APP_DISPLAYNAME__.
  ## LOCALIZATION NOTE (sslv3Used) - Do not translate "%S".
