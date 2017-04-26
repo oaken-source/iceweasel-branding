@@ -3,7 +3,7 @@
 set -eu
 
 pkgver=45.0
-pkgrel=1
+pkgrel=2
 
 srcdir=src
 distdir=iceweasel-${pkgver}
