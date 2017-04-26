@@ -1,17 +1,17 @@
-From: Mike Hommey <mh@glandium.org>
-Date: Sat, 19 Feb 2011 11:02:30 +0100
+From: André Silva <emulatorman@parabola.nu>
+Date: Sat, 04 Aug 2016 06:13:13 +0100
 Subject: Use MOZ_APP_DISPLAYNAME to fill appstrings.properties
 
 ---
  browser/locales/Makefile.in                          |  2 ++
- .../en-US/chrome/overrides/appstrings.properties     | 20 ++++++++++----------
- 2 files changed, 12 insertions(+), 10 deletions(-)
+ .../en-US/chrome/overrides/appstrings.properties     | 26 ++++++++++----------
+ 2 files changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index 4c092f0..038fa57 100644
+index 76c4af8..440c1a6 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -26,6 +26,8 @@ SUBMAKEFILES += \
+@@ -19,6 +19,8 @@ SUBMAKEFILES += \
  	$(DEPTH)/$(MOZ_BRANDING_DIRECTORY)/locales/Makefile \
  	$(NULL)
  
@@ -21,41 +21,55 @@ index 4c092f0..038fa57 100644
  # build non-default locales to non-default dist/ locations. Be aware!
  
 diff --git a/browser/locales/en-US/chrome/overrides/appstrings.properties b/browser/locales/en-US/chrome/overrides/appstrings.properties
-index 0484b32..6c2fd16 100644
+index ea6f26c..6412e39 100644
 --- a/browser/locales/en-US/chrome/overrides/appstrings.properties
 +++ b/browser/locales/en-US/chrome/overrides/appstrings.properties
-@@ -3,24 +3,24 @@
+@@ -3,25 +3,25 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
  malformedURI=The URL is not valid and cannot be loaded.
--fileNotFound=Firefox can't find the file at %S.
--dnsNotFound=Firefox can't find the server at %S.
--unknownProtocolFound=Firefox doesn't know how to open this address, because one of the following protocols (%S) isn't associated with any program or is not allowed in this context.
--connectionFailure=Firefox can't establish a connection to the server at %S.
-+#expand fileNotFound=__MOZ_APP_DISPLAYNAME__ can't find the file at %S.
-+#expand dnsNotFound=__MOZ_APP_DISPLAYNAME__ can't find the server at %S.
-+#expand unknownProtocolFound=__MOZ_APP_DISPLAYNAME__ doesn't know how to open this address, because one of the following protocols (%S) isn't associated with any program or is not allowed in this context.
-+#expand connectionFailure=__MOZ_APP_DISPLAYNAME__ can't establish a connection to the server at %S.
+-fileNotFound=Firefox can’t find the file at %S.
++#expand fileNotFound=__MOZ_APP_DISPLAYNAME__ can’t find the file at %S.
+ fileAccessDenied=The file at %S is not readable.
+-dnsNotFound=Firefox can’t find the server at %S.
+-unknownProtocolFound=Firefox doesn’t know how to open this address, because one of the following protocols (%S) isn’t associated with any program or is not allowed in this context.
+-connectionFailure=Firefox can’t establish a connection to the server at %S.
++#expand dnsNotFound=__MOZ_APP_DISPLAYNAME__ can’t find the server at %S.
++#expand unknownProtocolFound=__MOZ_APP_DISPLAYNAME__ doesn’t know how to open this address, because one of the following protocols (%S) isn’t associated with any program or is not allowed in this context.
++#expand connectionFailure=__MOZ_APP_DISPLAYNAME__ can’t establish a connection to the server at %S.
  netInterrupt=The connection to %S was interrupted while the page was loading.
  netTimeout=The server at %S is taking too long to respond.
 -redirectLoop=Firefox has detected that the server is redirecting the request for this address in a way that will never complete.
 +#expand redirectLoop=__MOZ_APP_DISPLAYNAME__ has detected that the server is redirecting the request for this address in a way that will never complete.
- ## LOCALIZATION NOTE (confirmRepostPrompt): In this item, don't translate "%S"
+ ## LOCALIZATION NOTE (confirmRepostPrompt): In this item, don’t translate "%S"
  confirmRepostPrompt=To display this page, %S must send information that will repeat any action (such as a search or order confirmation) that was performed earlier.
  resendButton.label=Resend
--unknownSocketType=Firefox doesn't know how to communicate with the server.
-+#expand unknownSocketType=__MOZ_APP_DISPLAYNAME__ doesn't know how to communicate with the server.
+-unknownSocketType=Firefox doesn’t know how to communicate with the server.
++#expand unknownSocketType=__MOZ_APP_DISPLAYNAME__ doesn’t know how to communicate with the server.
  netReset=The connection to the server was reset while the page was loading.
  notCached=This document is no longer available.
--netOffline=Firefox is currently in offline mode and can't browse the Web.
-+#expand netOffline=__MOZ_APP_DISPLAYNAME__ is currently in offline mode and can't browse the Web.
+-netOffline=Firefox is currently in offline mode and can’t browse the Web.
++#expand netOffline=__MOZ_APP_DISPLAYNAME__ is currently in offline mode and can’t browse the Web.
  isprinting=The document cannot change while Printing or in Print Preview.
 -deniedPortAccess=This address uses a network port which is normally used for purposes other than Web browsing. Firefox has canceled the request for your protection.
--proxyResolveFailure=Firefox is configured to use a proxy server that can't be found.
+-proxyResolveFailure=Firefox is configured to use a proxy server that can’t be found.
 -proxyConnectFailure=Firefox is configured to use a proxy server that is refusing connections.
 +#expand deniedPortAccess=This address uses a network port which is normally used for purposes other than Web browsing. __MOZ_APP_DISPLAYNAME__ has canceled the request for your protection.
-+#expand proxyResolveFailure=__MOZ_APP_DISPLAYNAME__ is configured to use a proxy server that can't be found.
++#expand proxyResolveFailure=__MOZ_APP_DISPLAYNAME__ is configured to use a proxy server that can’t be found.
 +#expand proxyConnectFailure=__MOZ_APP_DISPLAYNAME__ is configured to use a proxy server that is refusing connections.
  contentEncodingError=The page you are trying to view cannot be shown because it uses an invalid or unsupported form of compression.
  unsafeContentType=The page you are trying to view cannot be shown because it is contained in a file type that may not be safe to open. Please contact the website owners to inform them of this problem.
  externalProtocolTitle=External Protocol Request
+@@ -36,9 +36,9 @@ deceptiveBlocked=This web page at %S has been reported as a deceptive site and h
+ forbiddenBlocked=The site at %S has been blocked by your browser configuration.
+ cspBlocked=This page has a content security policy that prevents it from being loaded in this way.
+ corruptedContentError=The page you are trying to view cannot be shown because an error in the data transmission was detected.
+-remoteXUL=This page uses an unsupported technology that is no longer available by default in Firefox.
++#expand remoteXUL=This page uses an unsupported technology that is no longer available by default in __MOZ_APP_DISPLAYNAME__.
+ ## LOCALIZATION NOTE (sslv3Used) - Do not translate "%S".
+-sslv3Used=Firefox cannot guarantee the safety of your data on %S because it uses SSLv3, a broken security protocol.
++#expand sslv3Used=__MOZ_APP_DISPLAYNAME__ cannot guarantee the safety of your data on %S because it uses SSLv3, a broken security protocol.
+ ## LOCALIZATION NOTE (weakCryptoUsed) - Do not translate "%S".
+-weakCryptoUsed=The owner of %S has configured their website improperly. To protect your information from being stolen, Firefox has not connected to this website.
++#expand weakCryptoUsed=The owner of %S has configured their website improperly. To protect your information from being stolen, __MOZ_APP_DISPLAYNAME__ has not connected to this website.
+ inadequateSecurityError=The website tried to negotiate an inadequate level of security.
