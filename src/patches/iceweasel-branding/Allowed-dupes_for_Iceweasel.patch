@@ -1,0 +1,25 @@
+From: André Silva <emulatorman@parabola.nu>
+Date: Thu, 9 Mar 2017 01:20:04 -0300
+Subject: Allowed-dupes for Iceweasel
+
+---
+ browser/installer/allowed-dupes.mn | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/browser/installer/allowed-dupes.mn b/browser/installer/allowed-dupes.mn
+index c5ab86b65..c402ab76f 100644
+--- a/browser/installer/allowed-dupes.mn
++++ b/browser/installer/allowed-dupes.mn
+@@ -208,9 +208,9 @@ chrome/toolkit/skin/classic/mozapps/update/downloadButtons.png
+ components/FxAccountsPush.js
+ crashreporter.app/Contents/Resources/English.lproj/MainMenu.nib/classes.nib
+ crashreporter.app/Contents/Resources/English.lproj/MainMenuRTL.nib/classes.nib
+-# firefox/firefox-bin is bug 658850
+-firefox
+-firefox-bin
++# Iceweasel branding
++iceweasel
++iceweasel-bin
+ modules/FxAccountsPush.js
+ modules/commonjs/index.js
+ modules/commonjs/sdk/ui/button/view/events.js
