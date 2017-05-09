@@ -2,12 +2,13 @@
 
 set -eu
 
+pkgname=iceweasel
 pkgver=53.0
 pkgrel=1
 
 srcdir=src
-distdir=iceweasel-${pkgver}
-tarball=iceweasel_${pkgver}-${pkgrel}.branding.tar.xz
+distdir=${pkgname}-${pkgver}
+tarball=${pkgname}_${pkgver}-${pkgrel}.branding.tar.xz
 
 rm -rf $distdir/
 mkdir -pv $distdir
