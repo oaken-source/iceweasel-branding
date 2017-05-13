@@ -4,7 +4,7 @@ set -eu
 
 pkgname=iceweasel
 pkgver=53.0
-pkgrel=1
+pkgrel=2
 
 srcdir=src
 distdir=${pkgname}-${pkgver}
