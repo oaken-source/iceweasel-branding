@@ -10,7 +10,6 @@ include $(DEPTH)/config/autoconf.mk
 
 UNOFFICIAL_BRANDING_FILES = \
 	identity-icons-brand.svg \
-	silhouette-40.svg \
 	$(NULL)
 
 libs:: about-logo.png about-logo@2x.png about-wordmark.svg about.png icon16.png icon48.png icon64.png $(UNOFFICIAL_BRANDING_FILES)
